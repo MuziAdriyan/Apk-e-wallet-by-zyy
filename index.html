@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#6366f1">
-    <meta name="description" content="Aplikasi E-Wallet Modern - Kelola keuangan digital Anda dengan mudah">
+    <meta name="description" content="Aplikasi E-Wallet Modern - Kelola keuangan digital Anda">
     <title>E-Wallet</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
@@ -17,20 +17,19 @@
         <p>Memuat...</p>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div id="toast" class="toast"></div>
 
-    <!-- Modal Container -->
+    <!-- Modal -->
     <div id="modal-overlay" class="modal-overlay">
         <div id="modal-content" class="modal-content"></div>
     </div>
 
-    <!-- Main App Container -->
+    <!-- App Container -->
     <div id="app" class="app-container">
         
-        <!-- Dashboard / Beranda -->
+        <!-- Home Page -->
         <div id="page-home" class="page active">
-            <!-- Header -->
             <header class="header">
                 <div class="header-left">
                     <div class="avatar">
@@ -45,27 +44,27 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <button class="icon-btn" id="btn-notifications" aria-label="Notifikasi">
+                    <button class="icon-btn" id="btn-notifications">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         <span class="badge">3</span>
                     </button>
-                    <button class="icon-btn" id="btn-settings" aria-label="Pengaturan">
+                    <button class="icon-btn" id="btn-settings">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 1v6m0 6v6m9-9h-6m-6 0H3"></path>
+                            <path d="M12 1v6m0 6v6"></path>
+                            <path d="M17 12h6M5 12h6"></path>
                         </svg>
                     </button>
                 </div>
             </header>
 
-            <!-- Balance Card -->
             <div class="balance-card">
                 <div class="balance-header">
-                    <span class="balance-label">Saldo</span>
-                    <button class="btn-toggle-balance" id="btn-toggle-balance" aria-label="Tampilkan/Sembunyikan Saldo">
+                   <span class="balance-label">Saldo</span>
+                    <button class="btn-toggle-balance" id="btn-toggle-balance">
                         <svg id="icon-eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                             <circle cx="12" cy="12" r="3"></circle>
@@ -79,7 +78,7 @@
                 <h1 class="balance-amount" id="balance-amount">Rp 5.000.000</h1>
                 <div class="wallet-info">
                     <span class="wallet-number" id="wallet-number">0812-3456-7890</span>
-                    <button class="btn-copy" id="btn-copy-wallet" aria-label="Salin Nomor">
+                    <button class="btn-copy" id="btn-copy-wallet">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -106,7 +105,6 @@
                 </div>
             </div>
 
-            <!-- Quick Actions -->
             <div class="section">
                 <h2 class="section-title">Menu Utama</h2>
                 <div class="quick-actions">
@@ -172,7 +170,6 @@
                                 <polyline points="14 2 14 8 20 8"></polyline>
                                 <line x1="16" y1="13" x2="8" y2="13"></line>
                                 <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
                             </svg>
                         </div>
                         <span>Tagihan</span>
@@ -190,15 +187,12 @@
                 </div>
             </div>
 
-            <!-- Recent Transactions -->
             <div class="section">
                 <div class="section-header">
                     <h2 class="section-title">Transaksi Terakhir</h2>
-                    <button class="btn-text" id="btn-see-all-transactions">Lihat Semua</button>
+                    <button class="btn-text" id="btn-see-all">Lihat Semua</button>
                 </div>
-                <div class="transaction-list" id="recent-transactions">
-                    <!-- Transactions will be loaded here -->
-                </div>
+                <div class="transaction-list" id="recent-transactions"></div>
             </div>
         </div>
 
@@ -220,16 +214,14 @@
                     </svg>
                     <input type="text" placeholder="Cari transaksi..." id="search-transaction">
                 </div>
-                <div class="transaction-list" id="all-transactions">
-                    <!-- All transactions will be loaded here -->
-                </div>
+                <div class="transaction-list" id="all-transactions"></div>
             </div>
         </div>
 
         <!-- QR Page -->
         <div id="page-qr" class="page">
             <header class="page-header">
-                <button class="btn-back" id="btn-back-qr">
+                <button class="btn-back" data-back="home">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
@@ -240,7 +232,18 @@
             <div class="page-content qr-content">
                 <div class="qr-card">
                     <div class="qr-code" id="qr-code-display">
-                        <!-- QR Code will be generated here -->
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="white"/>
+                            <rect x="20" y="20" width="50" height="50" fill="black"/>
+                            <rect x="130" y="20" width="50" height="50" fill="black"/>
+                            <rect x="20" y="130" width="50" height="50" fill="black"/>
+                            <rect x="30" y="30" width="30" height="30" fill="white"/>
+                            <rect x="140" y="30" width="30" height="30" fill="white"/>
+                            <rect x="30" y="140" width="30" height="30" fill="white"/>
+                            <rect x="40" y="40" width="10" height="10" fill="black"/>
+                            <rect x="150" y="40" width="10" height="10" fill="black"/>
+                            <rect x="40" y="150" width="10" height="10" fill="black"/>
+                        </svg>
                     </div>
                     <div class="qr-info">
                         <h3 id="qr-username">Pengguna</h3>
@@ -272,7 +275,7 @@
         <!-- Pay Page -->
         <div id="page-pay" class="page">
             <header class="page-header">
-                <button class="btn-back" id="btn-back-pay">
+                <button class="btn-back" data-back="home">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
@@ -282,7 +285,7 @@
             </header>
             <div class="page-content">
                 <div class="payment-methods">
-                    <button class="payment-method-btn">
+                    <button class="payment-method-btn" id="btn-scan-pay">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="3" width="7" height="7"></rect>
                             <rect x="14" y="3" width="7" height="7"></rect>
@@ -291,7 +294,7 @@
                         </svg>
                         <span>Scan QR</span>
                     </button>
-                    <button class="payment-method-btn">
+                    <button class="payment-method-btn" id="btn-card-pay">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                             <line x1="1" y1="10" x2="23" y2="10"></line>
@@ -341,16 +344,1080 @@
                     <button class="profile-menu-item" id="btn-help">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                        <span>Pusat Bantuan</span>
-                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="profile-menu-item" id="btn-terms">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary-color: #ec4899;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --dark-color: #1f2937;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-tertiary: #f3f4f6;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bottom-nav-height: 70px;
+}
+
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-bottom: var(--bottom-nav-height);
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: none;
+}
+
+input, textarea {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+svg {
+    display: block;
+}
+
+/* ===== Loading Screen ===== */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-screen p {
+    color: white;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Toast ===== */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--dark-color);
+    color: white;
+    padding: 16px 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: 9998;
+    opacity: 0;
+    transition: var(--transition);
+    max-width: 90%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    background: var(--success-color);
+}
+
+.toast.error {
+    background: var(--danger-color);
+}
+
+.toast.warning {
+    background: var(--warning-color);
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9997;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: var(--transition);
+    padding: 24px;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-close:active {
+    transform: scale(0.95);
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== App Container ===== */
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--bg-primary);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===== Page System ===== */
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Header ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--bg-primary);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.avatar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.header-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.greeting {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+}
+
+.badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: var(--danger-color);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Balance Card ===== */
+.balance-card {
+    margin: 0 20px 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
+.balance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.balance-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.btn-toggle-balance {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-toggle-balance:active {
+    transform: scale(0.95);
+}
+
+.btn-toggle-balance svg {
+    width: 18px;
+    height: 18px;
+    color: white;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+}
+
+.wallet-number {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.btn-copy {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-copy:active {
+    transform: scale(0.95);
+}
+
+.btn-copy svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+.balance-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-balance-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-balance-action:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-balance-action svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ===== Section ===== */
+.section {
+    padding: 0 20px 24px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.btn-text {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-text:active {
+    opacity: 0.7;
+}
+
+/* ===== Quick Actions ===== */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.quick-action-btn:active {
+    transform: scale(0.95);
+}
+
+.quick-action-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+}
+
+.quick-action-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.quick-action-btn span {
+    font-size: 12px;
+    color: var(--text-primary);
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ===== Transaction List ===== */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.transaction-item:active {
+    transform: scale(0.98);
+    background: var(--bg-secondary);
+}
+
+.transaction-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.transaction-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.transaction-icon.in {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.transaction-icon.out {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.transaction-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.transaction-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.transaction-date {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.transaction-amount {
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.transaction-amount.in {
+    color: var(--success-color);
+}
+
+.transaction-amount.out {
+    color: var(--danger-color);
+}
+
+/* ===== Bottom Navigation ===== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: var(--bottom-nav-height);
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+    padding: 8px;
+    color: var(--text-light);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.nav-item span {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item:active {
+    transform: scale(0.95);
+}
+
+.nav-qr {
+    margin-top: -20px;
+}
+
+.qr-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
+.qr-button svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* ===== Page Header ===== */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.page-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.btn-back {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-back:active {
+    transform: scale(0.95);
+}
+
+.btn-back svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+}
+
+/* ===== Page Content ===== */
+.page-content {
+    padding: 20px;
+}
+
+/* ===== Filter Tabs ===== */
+.filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.filter-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-tab {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.filter-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-tab:active {
+    transform: scale(0.95);
+}
+
+/* ===== Search Box ===== */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+}
+
+.search-box svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-light);
+    flex-shrink: 0;
+}
+
+.search-box input {
+    flex: 1;
+    background: none;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.search-box input::placeholder {
+    color: var(--text-light);
+}
+
+/* ===== QR Content ===== */
+.qr-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.qr-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 32px;
+}
+
+.qr-code {
+    width: 240px;
+    height: 240px;
+    background: white;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    border: 8px solid var(--bg-secondary);
+}
+
+.qr-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.qr-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+.qr-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+    background: var(--primary-dark);
+}
+
+.btn-primary svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+    background: var(--bg-tertiary);
+}
+
+.btn-secondary svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== Payment Methods ===== */
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.payment-method-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    transition: var(--transition);
+    min-height: 120px;
+}
+
+.payment-method-btn:active {
+    transform: scale(0.98);
+    border-color: var(--primary-color);
+}
+
+.payment-method-btn svg {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
+}
+
+.payment-method-btn span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ===== Profile ===== */
+.profile-header {
+    text-align: center;
+    padding: 32px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    margin: -20px -20px 24px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-avatar svg {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.profile-header p {
+    font-size: 14px;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+    text-align: left;
+}
+
+.profile-menu-item:active {
+    transform: scale(0.98);
+    background: var(--bg-secondary);
+}
+
+.profile-menu-item svg:first-child {
+    width: 24px;
+    height: 24px;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.profile-menu-item span {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.profile-menu-item .chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--text-light);
+}
+
+.profile-menu-item.danger {
+    color: var(--danger-color);
+}
+
+.profile-menu-item.danger svg {
+    color: var(--danger-color);
+}
+
+.profile-menu-item.danger span {
+    color: var(--danger-color);
+}
+
+/* ===== Form Elements ===== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    background: var(--bg-primary);
+}
+
+.form-input::placeholder {
+    color: var(--text-light);
+}
+
+/* ===== Amount Input ===== */
+.amount-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.amount-input {
+    width: 100%;
+    padding: 20px 16px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-s
